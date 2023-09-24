@@ -11,6 +11,7 @@ const JobDetails = () => {
     const { id } = useParams();
     const idInt = parseInt(id);
     const jobs = useLoaderData()
+
     const job = jobs.find(job => job.id === idInt);
 
     const { job_description, job_responsibility, educational_requirements, experiences, salary, job_title, contact_information, id:jobId } = job;
