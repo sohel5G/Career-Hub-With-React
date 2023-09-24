@@ -4,8 +4,9 @@ import './index.css'
 import { createBrowserRouter, RouterProvider, } from "react-router-dom";
 import Root from './components/Root';
 import Frontpage from './components/Frontpage/Frontpage';
-import Statistics from './components/Statistics/Statistics';
 import AppliedJobs from './components/AppliedJobs/AppliedJobs';
+import Blogs from './components/Blogs/Blogs';
+import JobDetails from './components/Statistics/JobDetails';
 
 const router = createBrowserRouter([
   {
@@ -17,12 +18,18 @@ const router = createBrowserRouter([
         element: <Frontpage></Frontpage>
       },
       {
-        path: '/statistics',
-        element: <Statistics></Statistics>
+        path: '/appliedjobs',
+        loader: () => fetch('../public/data/jobs.json'),
+        element: <AppliedJobs></AppliedJobs>
       },
       {
-        path: '/appliedjobs',
-        element: <AppliedJobs></AppliedJobs>
+        path: '/blog',
+        element: <Blogs></Blogs>
+      },
+      {
+        path: '/job/:id',
+        loader: () => fetch('../public/data/jobs.json'),
+        element: <JobDetails></JobDetails>
       }
     ]
 
